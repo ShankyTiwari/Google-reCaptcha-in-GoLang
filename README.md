@@ -1,6 +1,6 @@
 # Authentication using JWT in Golang
 
-How to implement Facebook Login in Golang
+Google reCaptcha V3 implementation in GoLang
 
 ## Installtion
 
