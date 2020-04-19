@@ -48,17 +48,15 @@
     <body>
         <div class="app__container">
             <textarea id="user-message" placeholder="Write some message"></textarea>
-            <div id="captcha-container"></div>
             <button id="submit-button">Submit</button>
         </div>
-        <script src="https://www.google.com/recaptcha/api.js?render=6LdWseoUAAAAAM07lEEyCw6v70U9stJLVT0SHNgM"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=----SITE_KEY-----"></script>
         <script>
             const submitButton = document.querySelector('#submit-button');
-            const captchaContainer = document.querySelector('#captcha-container');
-
+            
             function getCaptchaToken(callback) {
                 grecaptcha.ready( () => {
-                    grecaptcha.execute('6LdWseoUAAAAAM07lEEyCw6v70U9stJLVT0SHNgM', {action: 'submit_message'}).then( (token) => {
+                    grecaptcha.execute('---SITE_KEY----', {action: 'submit_message'}).then( (token) => {
                         callback(token)
                     });;
                 });
@@ -73,7 +71,7 @@
                 }
 
                 getCaptchaToken( (token) => {
-                     fetch(`/storeMessage`, {
+                     fetch('/storeMessage', {
                         method: 'POST',
                         headers: {
                             'Content-Type': undefined
